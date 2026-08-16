@@ -10,7 +10,7 @@ pipeline {
         stage('Unit and Integration Tests') {
             steps {
                 echo 'Task: Running unit tests and integration tests to verify components work together.'
-                echo 'Tool used: TestNG'
+                echo 'Tool used: JUnit'
             }
         }
         stage('Code Analysis') {
