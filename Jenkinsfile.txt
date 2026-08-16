@@ -1,31 +1,46 @@
-pipeline{
+pipeline {
     agent any
-    stages{
-        stage("Build"){
-            steps{
-                echo "Building ..."
-            }
-            post{
-                always{
-                    mail to: "munazzazainab787@gmail.com",
-                    subject: "Build Status Email",
-                    body: "Build log attached!"
-                }
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Task: Compiling and packaging the application code.'
+                echo 'Tool used: Maven'
             }
         }
-        stage("Test"){
-            steps{
-                echo "Testing ..."
+        stage('Unit and Integration Tests') {
+            steps {
+                echo 'Task: Running unit tests and integration tests to verify components work together.'
+                echo 'Tool used: TestNG'
             }
         }
-        stage("Deploy"){
-            steps{
-                echo "Deploying ..."
+        stage('Code Analysis') {
+            steps {
+                echo 'Task: Analysing code quality against industry standards.'
+                echo 'Tool used: SonarQube'
             }
         }
-        stage("Complete"){
-            steps{
-                echo "Completed."
+        stage('Security Scan') {
+            steps {
+                echo 'Task: Scanning code for security vulnerabilities.'
+                echo 'Tool used: OWASP Dependency-Check'
+            }
+        }
+        stage('Deploy to Staging') {
+            steps {
+                echo 'Task: Deploying application to staging server.'
+                echo 'Tool used: AWS CLI'
+            }
+        }
+        stage('Integration Tests on Staging') {
+            steps {
+                echo 'Task: Running integration tests against the staging environment.'
+                echo 'Tool used: Cypress'
+            }
+        }
+        stage('Deploy to Production') {
+            steps {
+                echo 'Task: Deploying application to production server.'
+                echo 'Tool used: Ansible'
             }
         }
     }
